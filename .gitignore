@@ -1,4 +1,4 @@
 .env
-tmp/
-bin/
+tmp
+bin
 .DS_Store
