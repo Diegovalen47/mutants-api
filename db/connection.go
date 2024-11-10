@@ -19,7 +19,15 @@ func DBConnection() {
 		log.Println("Error loading .env file")
 	}
 
-	dsn := "host=" + os.Getenv("HOST") + " user=" + os.Getenv("USER_DB") + " password=" + os.Getenv("PASSWORD") + " dbname=" + os.Getenv("DB_NAME") + " sslmode=require"
+	var dsn string
+
+	env := os.Getenv("IS_LOCAL")
+
+	if env == "true" {
+		dsn = "host=" + os.Getenv("HOST") + " port=" + os.Getenv("PORT") + " user=" + os.Getenv("USER_DB") + " password=" + os.Getenv("PASSWORD") + " dbname=" + os.Getenv("DB_NAME") + " sslmode=disable"
+	} else {
+		dsn = "host=" + os.Getenv("HOST") + " user=" + os.Getenv("USER_DB") + " password=" + os.Getenv("PASSWORD") + " dbname=" + os.Getenv("DB_NAME") + " sslmode=require"
+	}
 
 	var error error
 	DB, error = gorm.Open(postgres.Open(dsn), &gorm.Config{})
