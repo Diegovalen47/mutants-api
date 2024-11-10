@@ -16,7 +16,7 @@ func DBConnection() {
 	errEnv := godotenv.Load()
 
 	if errEnv != nil {
-		log.Fatal("Error loading .env file")
+		log.Println("Error loading .env file")
 	}
 
 	dsn := "host=" + os.Getenv("HOST") + " user=" + os.Getenv("USER_DB") + " password=" + os.Getenv("PASSWORD") + " dbname=" + os.Getenv("DB_NAME") + " sslmode=require"
