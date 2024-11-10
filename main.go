@@ -21,5 +21,5 @@ func main() {
 	r.HandleFunc("/mutant", routes.PostDnaHandler).Methods("POST")
 	r.HandleFunc("/stats", routes.GetDnaStatsHandler).Methods("GET")
 
-	http.ListenAndServe(":3000", r)
+	http.ListenAndServe(":8080", r)
 }
