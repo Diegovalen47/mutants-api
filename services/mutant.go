@@ -24,26 +24,34 @@ func isMutant(dna []string) bool {
 
 	sequencesOfFourCount := 0
 
+	// Si la matriz es menor a 4x4, no puede haber más de 1 secuencia de 4
+	if n < 4 {
+		return false
+	}
+
 	// Iterar por cada celda de la matriz
 	for i := 0; i < n; i++ {
 		for j := 0; j < n; j++ {
+
+			currentChar := dna[i][j]
+
 			// Verificar horizontalmente
-			if j+3 < n && dna[i][j] == dna[i][j+1] && dna[i][j+1] == dna[i][j+2] && dna[i][j+2] == dna[i][j+3] {
+			if j+3 < n && currentChar == dna[i][j+1] && currentChar == dna[i][j+2] && currentChar == dna[i][j+3] {
 				sequencesOfFourCount++
 			}
 
 			// Verificar verticalmente
-			if i+3 < n && dna[i][j] == dna[i+1][j] && dna[i+1][j] == dna[i+2][j] && dna[i+2][j] == dna[i+3][j] {
+			if i+3 < n && currentChar == dna[i+1][j] && currentChar == dna[i+2][j] && currentChar == dna[i+3][j] {
 				sequencesOfFourCount++
 			}
 
 			// Verificar diagonal principal
-			if i+3 < n && j+3 < n && dna[i][j] == dna[i+1][j+1] && dna[i+1][j+1] == dna[i+2][j+2] && dna[i+2][j+2] == dna[i+3][j+3] {
+			if i+3 < n && j+3 < n && currentChar == dna[i+1][j+1] && currentChar == dna[i+2][j+2] && currentChar == dna[i+3][j+3] {
 				sequencesOfFourCount++
 			}
 
 			// Verificar diagonal secundaria
-			if i+3 < n && j-3 >= 0 && dna[i][j] == dna[i+1][j-1] && dna[i+1][j-1] == dna[i+2][j-2] && dna[i+2][j-2] == dna[i+3][j-3] {
+			if i+3 < n && j-3 >= 0 && currentChar == dna[i+1][j-1] && currentChar == dna[i+2][j-2] && currentChar == dna[i+3][j-3] {
 				sequencesOfFourCount++
 			}
 
