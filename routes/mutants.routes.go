@@ -81,5 +81,6 @@ func GetDnaStatsHandler(w http.ResponseWriter, r *http.Request) {
 
 	response := services.GetDnaStats(dnas)
 
+	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
 }
