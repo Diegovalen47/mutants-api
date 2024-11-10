@@ -24,7 +24,7 @@ go run main.go
 
 ## Correr tests
 
-1. Tener levantada la base de datos
+1. Tener levantada la base de datos (solo para routes)
 2. Ejecutar el comando `go test -v` en los siguientes archivos:
 
 - `routes`
