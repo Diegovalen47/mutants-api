@@ -70,5 +70,16 @@ func PostDnaHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetDnaStatsHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Get DNA Stats"))
+	var dnas []models.Dna
+	result := db.DB.Find(&dnas)
+
+	if result.Error != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		json.NewEncoder(w).Encode(result.Error)
+		return
+	}
+
+	response := services.GetDnaStats(dnas)
+
+	json.NewEncoder(w).Encode(response)
 }
