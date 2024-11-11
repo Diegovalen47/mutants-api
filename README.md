@@ -1,5 +1,13 @@
 # Mutants API
 
+API para determinar si un ADN es mutante, con estadísticas de mutantes y humanos.
+
+## Tecnologías
+
+- La aplicación está desarrollada en `Go`
+- Para la base de datos de utiliza `Postgres`, localmente con un contenedor de `Docker` y en la nube con `Neon Postgres`
+- Para el despliegue y alojamiento de la aplicación se utiliza `Koyeb`
+
 ## Instrucciones para ejecutar localmente
 
 1. Clonar el repositorio
